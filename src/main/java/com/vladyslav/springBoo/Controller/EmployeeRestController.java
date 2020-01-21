@@ -36,4 +36,16 @@ public class EmployeeRestController {
 
         return "Success";
     }
+
+    @DeleteMapping("/employees/{theId}")
+    public String deleteById(@PathVariable int theId){
+        iService.deleteById(theId);
+        return "Employee was delete, id " + theId;
+    }
+
+    @PutMapping("/employees")
+    public String updateEmployee(@RequestBody Employee theEmployee){
+        iService.update(theEmployee);
+        return "Employee was update";
+    }
 }

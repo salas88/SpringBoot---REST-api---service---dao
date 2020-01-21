@@ -40,4 +40,17 @@ public class ServiceImpl implements IService {
 
         iEmployeeDAO.save(theEmployee);
     }
+
+    @Override
+    @Transactional
+    public void deleteById(int theId) {
+
+        iEmployeeDAO.deleteById(theId);
+    }
+
+    @Override
+    @Transactional
+    public void update(Employee theEmployee) {
+        iEmployeeDAO.update(theEmployee);
+    }
 }

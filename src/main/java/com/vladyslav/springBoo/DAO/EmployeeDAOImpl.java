@@ -45,7 +45,20 @@ public class EmployeeDAOImpl implements IEmployeeDAO {
 
         theEmployee.setId(0);
 
-        currentSession.save(theEmployee);
+        currentSession.saveOrUpdate(theEmployee);
 
+    }
+
+    @Override
+    public void deleteById(int theId) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        Employee employee = currentSession.get(Employee.class, theId);
+        currentSession.delete(employee);
+    }
+
+    @Override
+    public void update(Employee theEmployee) {
+        Session currentSession = entityManager.unwrap(Session.class);
+        currentSession.saveOrUpdate(theEmployee);
     }
 }
